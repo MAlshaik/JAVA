@@ -1,0 +1,37 @@
+package com.company;
+import javafx.fxml.FXML;
+import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main {
+    @FXML
+    private Label lblStatus;
+
+    public static void main(String[] args) throws FileNotFoundException {
+
+        File file = new File("Fitness.txt");
+        Scanner scanner = new Scanner(file);
+
+
+        String[] cur;
+
+        int thursdayWeight;
+
+        while (scanner.hasNextLine()) {
+            cur = scanner.nextLine().split(":"); // a colon is simpler.
+            if (cur[0].equalsIgnoreCase("Thursday Weight")) {
+                thursdayWeight = Integer.parseInt(cur[1]);
+                System.out.println(thursdayWeight);
+            }
+
+            scanner.close();
+
+
+        }
+
+    }
+}
